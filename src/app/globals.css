@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030508;
+  --foreground: #f8fafc;
 }
 
 @theme inline {
@@ -12,15 +12,150 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle glow and utility tokens */
+.glow-accent-violet {
+  text-shadow: 0 0 24px rgba(139, 92, 246, 0.45);
+}
+
+.border-accent-glow {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15), inset 0 0 12px rgba(139, 92, 246, 0.05);
+}
+
+/* Continuous Subtle Ambient Animations */
+@keyframes scrollWheelGlide {
+  0% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes cyberStreamFlow {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
+
+@keyframes softNodeGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes starSparkleBreathe {
+  0%, 100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.6));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(167, 139, 250, 0.95));
+  }
+}
+
+@keyframes laptopGlowBreathe {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes cityLightShimmer {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes warmLampBreathe {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-scroll-wheel {
+  animation: scrollWheelGlide 2.2s ease-in-out infinite;
+}
+
+.animate-cyber-flow {
+  stroke-dasharray: 6 8;
+  animation: cyberStreamFlow 4s linear infinite;
+}
+
+.animate-cyber-flow-slow {
+  stroke-dasharray: 8 12;
+  animation: cyberStreamFlow 8s linear infinite;
+}
+
+.animate-node-pulse {
+  animation: softNodeGlow 3.5s ease-in-out infinite;
+}
+
+.animate-star-breathe {
+  animation: starSparkleBreathe 4s ease-in-out infinite;
+}
+
+.animate-laptop-breathe {
+  animation: laptopGlowBreathe 5.5s ease-in-out infinite;
+}
+
+.animate-city-shimmer {
+  animation: cityLightShimmer 4.5s ease-in-out infinite;
+}
+
+.animate-warm-breathe {
+  animation: warmLampBreathe 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-wheel,
+  .animate-cyber-flow,
+  .animate-cyber-flow-slow,
+  .animate-node-pulse,
+  .animate-star-breathe,
+  .animate-laptop-breathe,
+  .animate-city-shimmer,
+  .animate-warm-breathe {
+    animation: none !important;
+  }
+}
+
+
