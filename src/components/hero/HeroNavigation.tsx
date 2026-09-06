@@ -9,6 +9,21 @@ export default function HeroNavigation() {
     { label: "CONTACT", href: "#contact" },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "#about") {
+      e.preventDefault();
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        const pinSpacer = heroEl.parentElement;
+        const scrollTarget =
+          pinSpacer && pinSpacer.classList.contains("pin-spacer")
+            ? pinSpacer.offsetTop + (pinSpacer.offsetHeight - window.innerHeight) * 0.85
+            : window.innerHeight * 0.9;
+        window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <header
       id="hero-nav"
@@ -17,6 +32,10 @@ export default function HeroNavigation() {
       {/* Brand Logo: NS + star accent */}
       <a
         href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         className="group inline-flex items-center gap-1 text-xl sm:text-2xl font-bold tracking-tight text-white/95 transition-opacity hover:opacity-80 shrink-0"
         aria-label="Nasreen Sami Home"
       >
@@ -32,6 +51,7 @@ export default function HeroNavigation() {
             <a
               key={item.label}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="group relative py-1 transition-colors duration-200 hover:text-white"
             >
               <span>{item.label}</span>

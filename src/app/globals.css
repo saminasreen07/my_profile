@@ -145,14 +145,67 @@ body {
   animation: warmLampBreathe 7s ease-in-out infinite;
 }
 
+@keyframes dataPacketFlow {
+  from {
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cityAtmosphereDrift {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(-6px, -3px);
+    opacity: 0.22;
+  }
+}
+
+@keyframes laptopSurfaceReflect {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleX(0.96) scaleY(0.95);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleX(1.04) scaleY(1.05);
+  }
+}
+
+.animate-data-packet {
+  stroke-dasharray: 4 76;
+  animation: dataPacketFlow 3.2s linear infinite;
+}
+
+.animate-data-packet-slow {
+  stroke-dasharray: 3 64;
+  animation: dataPacketFlow 5.5s linear infinite;
+}
+
+.animate-city-drift {
+  animation: cityAtmosphereDrift 14s ease-in-out infinite;
+}
+
+.animate-laptop-reflect {
+  animation: laptopSurfaceReflect 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-scroll-wheel,
   .animate-cyber-flow,
   .animate-cyber-flow-slow,
+  .animate-data-packet,
+  .animate-data-packet-slow,
   .animate-node-pulse,
   .animate-star-breathe,
   .animate-laptop-breathe,
+  .animate-laptop-reflect,
   .animate-city-shimmer,
+  .animate-city-drift,
   .animate-warm-breathe {
     animation: none !important;
   }

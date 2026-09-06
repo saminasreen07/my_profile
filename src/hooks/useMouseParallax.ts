@@ -48,29 +48,29 @@ export function useMouseParallax({
       const y = mouse.current.currentY;
 
       // Layered Depth Transforms:
-      // 1. Far Layer: City/window atmosphere & distant lights (barely moves: ±2.5px)
+      // 1. Far Layer: City/window atmosphere & distant lights (barely moves: ±3.5px)
       if (farRef?.current) {
-        farRef.current.style.transform = `translate3d(${-x * 2.5}px, ${-y * 2}px, 0)`;
+        farRef.current.style.transform = `translate3d(${-x * 3.5}px, ${-y * 2.5}px, 0)`;
       }
 
-      // 2. Middle Layer: Workspace, desk, books, plant, lamp (moves slightly: ±6px)
+      // 2. Middle Layer: Workspace, desk, books, plant, lamp (moves slightly: ±8px)
       if (workspaceRef?.current) {
-        workspaceRef.current.style.transform = `translate3d(${-x * 6}px, ${-y * 4.5}px, 0)`;
+        workspaceRef.current.style.transform = `translate3d(${-x * 8}px, ${-y * 6}px, 0)`;
       }
 
-      // 3. Foreground: Laptop glow & anchor (moves slightly more: ±10px)
+      // 3. Foreground: Laptop glow & anchor (moves slightly more: ±14px)
       if (laptopRef?.current) {
-        laptopRef.current.style.transform = `translate3d(${-x * 10}px, ${-y * 7.5}px, 0)`;
+        laptopRef.current.style.transform = `translate3d(${-x * 14}px, ${-y * 10}px, 0)`;
       }
 
-      // 4. Foreground: Digital technology elements (slightly more responsive: ±15px)
+      // 4. Foreground: Digital technology elements (responsive depth: ±20px)
       if (digitalRef?.current) {
-        digitalRef.current.style.transform = `translate3d(${-x * 15}px, ${-y * 11}px, 0)`;
+        digitalRef.current.style.transform = `translate3d(${-x * 20}px, ${-y * 14}px, 0)`;
       }
 
-      // 5. Particles: Subtle independent movement (±22px)
+      // 5. Particles: Floating depth movement (±28px)
       if (particlesRef?.current) {
-        particlesRef.current.style.transform = `translate3d(${-x * 22}px, ${-y * 15}px, 0)`;
+        particlesRef.current.style.transform = `translate3d(${-x * 28}px, ${-y * 18}px, 0)`;
       }
 
       animationFrameId = requestAnimationFrame(update);
